@@ -12,6 +12,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - run: './gradlew build'
+      - name: Send message to Slack API
+        uses: archive/github-actions-slack@v2.0.0
+        id: notify
+        with:
+          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+          slack-channel: T92ST7DFW
+          slack-text: Elluuh
+
   lint:
     runs-on: ubuntu-latest
     steps:
