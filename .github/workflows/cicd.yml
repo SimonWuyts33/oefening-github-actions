@@ -20,7 +20,7 @@ jobs:
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
           slack-channel: ${{ secrets.CHANNEL_ID}}
-          slack-text: Elluuh 2.0
+          slack-text: Elluuh 3.0
 
   lint:
     runs-on: ubuntu-latest

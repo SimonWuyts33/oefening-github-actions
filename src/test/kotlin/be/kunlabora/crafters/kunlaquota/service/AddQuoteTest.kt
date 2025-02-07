@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test
 
 
 class AddQuoteTest {
+
+    @Test
+    fun fails() {
+        assertThat(7).isEqualTo(2)
+    }
+
     @Test
     fun `AddQuote does not validate when one of the lines doesn't contain a name`() {
         val result = AddQuote(
