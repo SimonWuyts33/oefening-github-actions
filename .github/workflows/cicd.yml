@@ -6,19 +6,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-#      - uses: actions/checkout@v4
-#      - uses: actions/setup-java@v4
-#        with:
-#          distribution: 'temurin'
-#          java-version: '17'
-#      - run: './gradlew build'
-      - name: Send message to Slack API
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: build
+        run: './gradlew build'
+        continue-on-error: true
+      - name: Send message to Slack API\
+        if: steps.build.outcome == 'failure'
         uses: archive/github-actions-slack@v2.0.0
-        id: notify
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
           slack-channel: ${{ secrets.CHANNEL_ID}}
-          slack-text: Elluuh
+          slack-text: Elluuh 2.0
 
   lint:
     runs-on: ubuntu-latest
